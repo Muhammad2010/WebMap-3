@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/filter.css">
+<link rel="stylesheet" href="css/nouislider.min.css">
+        <style>
+        #map {
+            width: 977px;
+            height: 547px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="js/tailDT.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/wNumb.js"></script>
+        <script src="data/Turkey_0.js"></script>
+        <script src="data/Distribution_1.js"></script>
+        <script src="data/Wash_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[33.05807560459949,25.4734071763641],[44.697006041277035,52.32657931956203]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_Turkey_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['iso_a2'] !== null ? autolinker.link(feature.properties['iso_a2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FIPS_10_'] !== null ? autolinker.link(feature.properties['FIPS_10_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ISO_A3'] !== null ? autolinker.link(feature.properties['ISO_A3'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WB_A2'] !== null ? autolinker.link(feature.properties['WB_A2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WB_A3'] !== null ? autolinker.link(feature.properties['WB_A3'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Turkey_0_0() {
+            return {
+                pane: 'pane_Turkey_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(242,242,242,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Turkey_0');
+        map.getPane('pane_Turkey_0').style.zIndex = 400;
+        map.getPane('pane_Turkey_0').style['mix-blend-mode'] = 'normal';
+        var layer_Turkey_0 = new L.geoJson(json_Turkey_0, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Turkey_0',
+            layerName: 'layer_Turkey_0',
+            pane: 'pane_Turkey_0',
+            onEachFeature: pop_Turkey_0,
+            style: style_Turkey_0_0,
+        });
+        bounds_group.addLayer(layer_Turkey_0);
+        map.addLayer(layer_Turkey_0);
+        function pop_Distribution_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Name</th>\
+                        <td>' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FolderPath'] !== null ? autolinker.link(feature.properties['FolderPath'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Date</th>\
+                        <td>' + (feature.properties['Date'] !== null ? autolinker.link(feature.properties['Date'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Project</th>\
+                        <td>' + (feature.properties['Project'] !== null ? autolinker.link(feature.properties['Project'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Gender</th>\
+                        <td>' + (feature.properties['Gender'] !== null ? autolinker.link(feature.properties['Gender'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['photos'] !== null ? '<img src="images/' + String(feature.properties['photos']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Distribution_1_0() {
+            return {
+                pane: 'pane_Distribution_1',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/download.svg',
+            iconSize: [28.12, 28.12]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Distribution_1');
+        map.getPane('pane_Distribution_1').style.zIndex = 401;
+        map.getPane('pane_Distribution_1').style['mix-blend-mode'] = 'normal';
+        var layer_Distribution_1 = new L.geoJson(json_Distribution_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Distribution_1',
+            layerName: 'layer_Distribution_1',
+            pane: 'pane_Distribution_1',
+            onEachFeature: pop_Distribution_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Distribution_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Distribution_1);
+        map.addLayer(layer_Distribution_1);
+        function pop_Wash_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Name</th>\
+                        <td>' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FolderPath'] !== null ? autolinker.link(feature.properties['FolderPath'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Date</strong><br />' + (feature.properties['Date'] !== null ? autolinker.link(feature.properties['Date'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Province</th>\
+                        <td>' + (feature.properties['Province'] !== null ? autolinker.link(feature.properties['Province'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Project</th>\
+                        <td>' + (feature.properties['Project'] !== null ? autolinker.link(feature.properties['Project'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Gender</th>\
+                        <td>' + (feature.properties['Gender'] !== null ? autolinker.link(feature.properties['Gender'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Photos'] !== null ? '<img src="images/' + String(feature.properties['Photos']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Wash_2_0() {
+            return {
+                pane: 'pane_Wash_2',
+        rotationAngle: 0.0349066,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/btkkp.svg',
+            iconSize: [31.159999999999997, 31.159999999999997]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Wash_2');
+        map.getPane('pane_Wash_2').style.zIndex = 402;
+        map.getPane('pane_Wash_2').style['mix-blend-mode'] = 'normal';
+        var layer_Wash_2 = new L.geoJson(json_Wash_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Wash_2',
+            layerName: 'layer_Wash_2',
+            pane: 'pane_Wash_2',
+            onEachFeature: pop_Wash_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Wash_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Wash_2);
+        map.addLayer(layer_Wash_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Wash_2.png" /> Wash': layer_Wash_2,'<img src="legend/Distribution_1.png" /> Distribution': layer_Distribution_1,'<img src="legend/Turkey_0.png" /> Turkey': layer_Turkey_0,}).addTo(map);
+        setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_Distribution_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'Date'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        var mapDiv = document.getElementById('map');
+        var row = document.createElement('div');
+        row.className="row";
+        row.id="all";
+        row.style.height = "100%";
+        var col1 = document.createElement('div');
+        col1.className="col9";
+        col1.id = "mapWindow";
+        col1.style.height = "99%";
+        col1.style.width = "80%";
+        col1.style.display = "inline-block";
+        var col2 = document.createElement('div');
+        col2.className="col3";
+        col2.id = "menu";
+        col2.style.display = "inline-block";
+        mapDiv.parentNode.insertBefore(row, mapDiv);
+        document.getElementById("all").appendChild(col1);
+        document.getElementById("all").appendChild(col2);
+        col1.appendChild(mapDiv)
+        var Filters = {"Date": "date","Project": "str","Province": "str"};
+        function filterFunc() {
+          map.eachLayer(function(lyr){
+          if ("options" in lyr && "dataVar" in lyr["options"]){
+            features = this[lyr["options"]["dataVar"]].features.slice(0);
+            try{
+              for (key in Filters){
+                keyS = key.replace(/[^a-zA-Z0-9_]/g, "")
+                if (Filters[key] == "str" || Filters[key] == "bool"){
+                  var selection = [];
+                  var options = document.getElementById("sel_" + keyS).options
+                  for (var i=0; i < options.length; i++) {
+                    if (options[i].selected) selection.push(options[i].value);
+                  }
+                    try{
+                      if (key in features[0].properties){
+                        for (i = features.length - 1;
+                          i >= 0; --i){
+                          if (selection.indexOf(
+                          features[i].properties[key])<0
+                          && selection.length>0) {
+                          features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                  }
+                }
+                if (Filters[key] == "int"){
+                  sliderVals =  document.getElementById(
+                    "div_" + keyS).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (parseInt(features[i].properties[key])
+                          < sliderVals[0]
+                          || parseInt(features[i].properties[key])
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "real"){
+                  sliderVals =  document.getElementById(
+                    "div_" + keyS).noUiSlider.get();
+                  try{
+                    if (key in features[0].properties){
+                    for (i = features.length - 1; i >= 0; --i){
+                      if (features[i].properties[key]
+                          < sliderVals[0]
+                          || features[i].properties[key]
+                          > sliderVals[1]){
+                            features.splice(i,1);
+                          }
+                        }
+                      }
+                    } catch(err){
+                    }
+                  }
+                if (Filters[key] == "date"
+                  || Filters[key] == "datetime"
+                  || Filters[key] == "time"){
+                  try{
+                    if (key in features[0].properties){
+                      HTMLkey = key.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g, '');
+                      startdate = document.getElementById("dat_" +
+                        HTMLkey + "_date1").value.replace(" ", "T");
+                      enddate = document.getElementById("dat_" +
+                        HTMLkey + "_date2").value.replace(" ", "T");
+                      for (i = features.length - 1; i >= 0; --i){
+                        if (features[i].properties[key] < startdate
+                          || features[i].properties[key] > enddate){
+                          features.splice(i,1);
+                        }
+                      }
+                    }
+                  } catch(err){
+                  }
+                }
+              }
+            } catch(err){
+            }
+          this[lyr["options"]["layerName"]].clearLayers();
+          this[lyr["options"]["layerName"]].addData(features);
+          }
+          })
+        }
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Date_date1 = document.createElement("div");
+            div_Date_date1.id = "div_Date_date1";
+            div_Date_date1.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Date_date1);
+            dat_Date_date1 = document.createElement('input');
+            dat_Date_date1.type = "text";
+            dat_Date_date1.id = "dat_Date_date1";
+            div_Date_date1.appendChild(dat_Date_date1);
+            var lab_Date_date1 = document.createElement('div');
+            lab_Date_date1.innerHTML  = 'Date from';
+            lab_Date_date1.className = 'filterlabel';
+            document.getElementById("div_Date_date1").appendChild(
+                lab_Date_date1);
+            var reset_Date_date1 = document.createElement('div');
+            reset_Date_date1.innerHTML = "clear";
+            reset_Date_date1.className = 'filterlabel';
+            reset_Date_date1.onclick = function() {
+                tail.DateTime("#dat_Date_date1", {
+                    dateStart: 1688158800000,
+                    dateEnd: 1690837200000,
+                    dateFormat: 'YYYY-mm-dd',
+                    timeFormat: false,
+                    today: false,
+                    weekStart: 1,
+                    position: "left",
+                    closeButton: true,
+                    timeStepMinutes:1,
+                    timeStepSeconds: 1
+                }).selectDate(2023,7-1,1,0,0,0);
+                tail.DateTime("#dat_Date_date1").reload()
+            }
+            document.getElementById("div_Date_date1").appendChild(
+                reset_Date_date1);
+            document.addEventListener("DOMContentLoaded", function(){
+                tail.DateTime("#dat_Date_date1", {
+                    dateStart: 1688158800000,
+                    dateEnd: 1690837200000,
+                    dateFormat: 'YYYY-mm-dd',
+                    timeFormat: false,
+                    today: false,
+                    weekStart: 1,
+                    position: "left",
+                    closeButton: true,
+                    timeStepMinutes:1,
+                    timeStepSeconds: 1
+                }).selectDate(2023,7-1,1,0,0,0);
+                tail.DateTime("#dat_Date_date1").reload()
+                tail.DateTime("#dat_Date_date2", {
+                    dateStart: 1688158800000,
+                    dateEnd: 1690837200000,
+                    dateFormat: 'YYYY-mm-dd',
+                    timeFormat: false,
+                    today: false,
+                    weekStart: 1,
+                    position: "left",
+                    closeButton: true,
+                    timeStepMinutes:1,
+                    timeStepSeconds: 1
+                }).selectDate(2023,8-1,1,0,0,0);
+                tail.DateTime("#dat_Date_date2").reload()
+                filterFunc()
+                dat_Date_date1.onchange = function(){filterFunc()};
+                dat_Date_date2.onchange = function(){filterFunc()};
+            });
+            var div_Date_date2 = document.createElement("div");
+            div_Date_date2.id = "div_Date_date2";
+            div_Date_date2.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Date_date2);
+            dat_Date_date2 = document.createElement('input');
+            dat_Date_date2.type = "text";
+            dat_Date_date2.id = "dat_Date_date2";
+            div_Date_date2.appendChild(dat_Date_date2);
+            var lab_Date_date2 = document.createElement('div');
+            lab_Date_date2.innerHTML  = 'Date till';
+            lab_Date_date2.className = 'filterlabel';
+            document.getElementById("div_Date_date2")
+              .appendChild(lab_Date_date2);
+            var reset_Date_date2 = document.createElement('div');
+            reset_Date_date2.innerHTML = "clear";
+            reset_Date_date2.className = 'filterlabel';
+            reset_Date_date2.onclick = function() {
+                tail.DateTime("#dat_Date_date2", {
+                    dateStart: 1688158800000,
+                    dateEnd: 1690837200000,
+                    dateFormat: 'YYYY-mm-dd',
+                    timeFormat: false,
+                    today: false,
+                    weekStart: 1,
+                    position: "left",
+                    closeButton: true,
+                    timeStepMinutes:1,
+                    timeStepSeconds: 1
+                }).selectDate(2023,8-1,1,0,0,0);
+                tail.DateTime("#dat_Date_date2").reload()
+            }
+            document.getElementById("div_Date_date2").appendChild(
+                reset_Date_date2);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Project = document.createElement('div');
+            div_Project.id = "div_Project";
+            div_Project.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Project);
+            sel_Project = document.createElement('select');
+            sel_Project.multiple = true;
+            sel_Project.size = 3;
+            sel_Project.id = "sel_Project";
+            var Project_options_str = "<option value='' unselected></option>";
+            sel_Project.onchange = function(){filterFunc()};
+            Project_options_str  += '<option value="ACF">ACF</option>';
+            Project_options_str  += '<option value="Concern">Concern</option>';
+            Project_options_str  += '<option value="SCI">SCI</option>';
+            sel_Project.innerHTML = Project_options_str;
+            div_Project.appendChild(sel_Project);
+            var lab_Project = document.createElement('div');
+            lab_Project.innerHTML = 'Project';
+            lab_Project.className = 'filterlabel';
+            div_Project.appendChild(lab_Project);
+            var reset_Project = document.createElement('div');
+            reset_Project.innerHTML = 'clear filter';
+            reset_Project.className = 'filterlabel';
+            reset_Project.onclick = function() {
+                var options = document.getElementById("sel_Project").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Project.appendChild(reset_Project);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
+            var div_Province = document.createElement('div');
+            div_Province.id = "div_Province";
+            div_Province.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Province);
+            sel_Province = document.createElement('select');
+            sel_Province.multiple = true;
+            sel_Province.size = 3;
+            sel_Province.id = "sel_Province";
+            var Province_options_str = "<option value='' unselected></option>";
+            sel_Province.onchange = function(){filterFunc()};
+            Province_options_str  += '<option value="Adıyaman">Adıyaman</option>';
+            Province_options_str  += '<option value="Diyarbakır">Diyarbakır</option>';
+            Province_options_str  += '<option value="Hatay">Hatay</option>';
+            sel_Province.innerHTML = Province_options_str;
+            div_Province.appendChild(sel_Province);
+            var lab_Province = document.createElement('div');
+            lab_Province.innerHTML = 'Province';
+            lab_Province.className = 'filterlabel';
+            div_Province.appendChild(lab_Province);
+            var reset_Province = document.createElement('div');
+            reset_Province.innerHTML = 'clear filter';
+            reset_Province.className = 'filterlabel';
+            reset_Province.onclick = function() {
+                var options = document.getElementById("sel_Province").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Province.appendChild(reset_Province);
+        </script>
+    </body>
+</html>
